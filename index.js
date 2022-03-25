@@ -38,6 +38,6 @@
             todolist.appendChild(Mynewbulletlist)//putting the li that holds the contents into the todolist
         
         }
-    }
+    } 
     //The populateTodos button will relist all of the new gather info from the website and relist on the browser
     
