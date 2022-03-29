@@ -3,7 +3,6 @@
     let arrayOfTodos = []
     // this allow it to create an array that will be capable to hold the entire list of array 
 
-
     const fetchTodos = () => {
         fetch('https://jsonplaceholder.typicode.com/todos')
         .then( (response) => response.json())
@@ -12,15 +11,11 @@
     //tell it to go get all the info off their website
 
 
-    //************************************* */
-
     const logTodos = () => {
         console.log(arrayOfTodos)
     }
     //the logTodo button display the entire list from fetching info from the website here after you click on it.Here we declared it as a constant
     
-    //**************************************** */
-
 
     const populateTodos = () => {
         const todolist = document.getElementById('todo-list')
@@ -28,16 +23,103 @@
         for(i=0; i<arrayOfTodos.length; i++){
        
             const Mynewbulletlist = document.createElement('li')
-
             const Newgathercontent = document.createTextNode(arrayOfTodos[i].title)
-
-
             //to put contents back in list and the entire list, you need to use appendChild:            
             Mynewbulletlist.appendChild(Newgathercontent) //putting content into newliEment
-
             todolist.appendChild(Mynewbulletlist)//putting the li that holds the contents into the todolist
         
         }
     } 
     //The populateTodos button will relist all of the new gather info from the website and relist on the browser
+
     
+
+
+    let User_input_ID_Array = []
+
+    const matchuseridinfo = () => {
+        // method 1
+        let userid = document.getElementById('useridnumber').value
+        User_input_ID_Array = arrayOfTodos.filter(todo => todo.userId == userid);
+
+        // **************************
+
+        // method 2
+        // let usernewid = document.getElementById('usesrid#').value
+        // for(i=0; i<arrayOfTodos.length; i++){
+        //     if(arrayOfTodos[i].userId==usernewid){ //userId is from the Json page
+        //         UserinputID.push(arrayOfTodos[i]) //writing the new line
+        //     }
+        // }
+
+        // *********************
+        submitbutton()
+        clearscreen() 
+        new_Input_populate_list()
+        //populate but use only userid 
+        
+    }
+    
+    function submitbutton () {
+        userenterid = document.getElementById('useridnumber').value;
+        document.getElementById('alert').innerHTML = 'The user input is: ' + userenterid;
+    }
+
+    grabnewtodolist = []
+    const clearscreen = () => { 
+        //(1) first select all of the LI HTML
+        //(2) create a for loop to clear them from that array
+        //(3rd) use .queryselectorall and .remove
+        const grabnewtodolist = document.querySelectorAll('#todo-list')
+        
+        for(i=0; i<grabnewtodolist.length; i++){
+       
+            const newLI = document.createElement('li')
+            console.log(newLI)
+
+            const NewLIcontent = document.createTextNode(grabnewtodolist[i].textContent)
+            console.log(NewLIcontent)
+
+            newLI.appendChild(NewLIcontent)
+            grabnewtodolist.appendChild(newLI) 
+            //can't get this one working :( 
+           
+            //***************ASK************* */
+            var remove = grabnewtodolist.remove(newLI)
+            grabnewtodolist.appendChild(remove)
+            console.log(remove)
+        }
+        
+    }
+
+    const fetch_New_TODO = () => {
+        fetch('https://jsonplaceholder.typicode.com/todos')
+        .then( (response) => response.json())
+        .then( (json) => User_input_ID_Array = json)
+    }
+
+
+    const new_Input_populate_list = () => {
+        const writenewtodolist = document.getElementById('todo-list')
+        const inputid = document.getElementById('useridnumber').value
+        console.log("user input value is:", inputid)
+        
+        while(j=userenterid){
+            const newlist2 = document.createElement('li')
+            const newcontent2 = document.createTextNode(User_input_ID_Array[j])         
+            newlist2.appendChild(newcontent2) 
+            writenewtodolist.appendChild(newlist2)
+        }
+        
+
+    } 
+
+
+
+
+
+
+
+
+
+//complete or not () 
