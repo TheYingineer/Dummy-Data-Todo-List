@@ -70,26 +70,34 @@
         //(1) first select all of the LI HTML
         //(2) create a for loop to clear them from that array
         //(3rd) use .queryselectorall and .remove
-        const grabnewtodolist = document.querySelectorAll('#todo-list')
-        
-        for(i=0; i<grabnewtodolist.length; i++){
-       
-            const newLI = document.createElement('li')
-            console.log(newLI)
+        const grabnewtodolist = document.querySelectorAll('li')
+        console.log(grabnewtodolist)
 
-            const NewLIcontent = document.createTextNode(grabnewtodolist[i].textContent)
-            console.log(NewLIcontent)
+        grabnewtodolist.forEach(list => {
+            list.parentNode.removeChild(list)
+        })
+        // for(i=0; i<grabnewtodolist.length; i++){
+            // console.log(grabnewtodolist[i])
+        // const ol =  document.querySelectorAll("#todo-list")
+        // ol.removeChild(grabnewtodolist[i])
+        // grabnewtodolist[i].parentNode.removeChild(grabnewtodolist[i])
 
-            newLI.appendChild(NewLIcontent)
-            grabnewtodolist.appendChild(newLI) 
-            //can't get this one working :( 
+            // const newLI = document.createElement('li')
+            // console.log(newLI)
+
+            // const NewLIcontent = document.createTextNode(grabnewtodolist[i].textContent)
+            // console.log(NewLIcontent)
+
+            // newLI.appendChild(NewLIcontent)
+            // grabnewtodolist[i].appendChild(newLI) 
+            // //can't get this one working :( 
            
-            //***************ASK************* */
-            var remove = grabnewtodolist.remove(newLI)
-            grabnewtodolist.appendChild(remove)
-            console.log(remove)
-        }
-        
+            // //***************ASK************* */
+            // var remove = grabnewtodolist.remove(newLI)
+            // grabnewtodolist.appendChild(remove)
+            // console.log(remove)
+        // }
+        console.log(grabnewtodolist)
     }
 
     const fetch_New_TODO = () => {
