@@ -53,7 +53,7 @@
         // }
 
         // *********************
-        submitbutton()
+        // submitbutton()
         clearscreen() 
         new_Input_populate_list()
         //populate but use only userid 
@@ -107,17 +107,20 @@
     }
 
 
-    const new_Input_populate_list = () => {
-        const writenewtodolist = document.getElementById('todo-list')
+    const new_Input_populate_list = () => {    
+        
         const inputid = document.getElementById('useridnumber').value
         console.log("user input value is:", inputid)
-        
-        while(j=userenterid){
-            const newlist2 = document.createElement('li')
-            const newcontent2 = document.createTextNode(User_input_ID_Array[j])         
-            newlist2.appendChild(newcontent2) 
-            writenewtodolist.appendChild(newlist2)
-        }
+        console.log('BEFORE arrayOfTodos:', arrayOfTodos)
+        arrayOfTodos = arrayOfTodos.filter(todo => {
+            console.log('todo:', todo)
+            console.log('todo.userId === parseInt(inputid):', todo.userId === parseInt(inputid))
+
+            return todo.userId === parseInt(inputid)
+        })
+        console.log('AFTER arrayOfTodos:', arrayOfTodos)
+        populateTodos()
+
         
 
     } 
